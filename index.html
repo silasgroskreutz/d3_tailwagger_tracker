@@ -3,11 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
     <title>Tail-Wagger Tracking</title>
+    <style>
+        h2, p{
+            margin: 10px 0;
+        }
+        header{
+            margin-bottom: 40px;
+        }
+    </style>
   </head>
-  <body>
+  <body class="indigo">
+    <header class="indigo darken-1 section">
+      <h2 class="center white-text">Tail-Wagger Tracker</h2>
+      <p class="flow-text grey-text center text-lightn-2">
+        Monthly money tracker for your puppy
+      </p>
+    </header>
+
+    <div class="container section">
+      <div class="row">
+        <div class="col s12 m6">
+          <form class="card z-depth-0">
+              <div class="card-content">
+            <span class="card-title indigo-text">Add Item:</span>
+            <div class="input-field">
+              <input type="text" id="name" />
+              <label for="name">Item Name</label>
+            </div>
+            <div class="input-field">
+              <input type="text" id="cost" />
+              <label for="name">Monthly Item Cost ($)</label>
+            </div>
+            <div class="input-field center">
+              <button class="btn-large pink white-text">Add Item</button>
+            </div>
+            <div class="input-field center">
+              <p class="red-text" id="error">test</p>
+            </div>
+          </form>
+        </div>
+        </div>
+        <div class="col s12 m5 push-m1"><div class="canvas"></div></div>
+      </div>
+    </div>
     <script src="https://d3js.org/d3.v5.js"></script>
     <script src="index.js"></script>
     <script src="graph.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>
