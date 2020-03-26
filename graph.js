@@ -77,6 +77,13 @@ const update = data => {
     .transition()
     .duration(750)
     .attrTween('d', arcTweenEnter);
+
+  //add events
+  graph
+    .selectAll('path')
+    .on('mouseover', handleMouseOver)
+    .on('mouseout', handleMouseOut)
+    .on('click', handleClick);
 };
 
 // data array and firestore
@@ -133,3 +140,28 @@ function arcTweenUpdate(d) {
     return arcPath(i(t));
   };
 }
+
+//event handlers
+
+//This is called in the 'const update' so it will have access to the parameters
+//d is the data, n is the selection of all the path elements, i index of the current element we are hovering over
+const handleMouseOver = (d, i, n) => {
+  d3.select(n[i])
+    .transition('changeSliceFill')
+    .duration(300)
+    .attr('fill', '#fff');
+};
+
+const handleMouseOut = (d, i, n) => {
+  d3.select(n[i])
+    .transition('changeSliceFill')
+    .duration(300)
+    .attr('fill', color(d.data.name));
+};
+
+const handleClick = d => {
+  const id = d.data.id;
+  db.collection('expenses')
+    .doc(id)
+    .delete();
+};
