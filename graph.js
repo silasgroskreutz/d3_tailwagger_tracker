@@ -34,6 +34,12 @@ const update = data => {
   // join enhanced (pie) data to path elements
   const paths = graph.selectAll('path').data(pie(data));
 
+  // handle the exit selection
+  paths.exit().remove();
+
+  // handles the current DOM path updates / edits
+  paths.attr('d', arcPath);
+
   paths
     .enter()
     .append('path')
